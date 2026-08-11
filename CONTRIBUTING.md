@@ -24,7 +24,7 @@ cd napari-bfs-nd2
 python -m venv .venv
 source .venv/bin/activate
 python -m pip install --upgrade pip
-python -m pip install -e ".[test,docs,napari]" ruff build
+python -m pip install -e ".[test,docs,napari]" build
 ```
 
 On Windows, activate with `.venv\Scripts\Activate.ps1`.

@@ -23,7 +23,7 @@ jobs:
           python-version: ${{ matrix.python-version }}
           cache: pip
       - name: Install test dependencies
-        run: python -m pip install -e ".[test]" ruff
+        run: python -m pip install -e ".[test]"
       - name: Lint
         run: ruff check .
       - name: Validate npe2 manifest
