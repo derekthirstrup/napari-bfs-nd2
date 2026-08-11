@@ -1,0 +1,65 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "napari-bfs-nd2"
+version = "0.3.0"
+description = "Plane-lazy napari reader and path widget for local, S3, and HTTP ND2/CZI files"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "BSD-3-Clause"
+license-files = ["LICENSE"]
+authors = [
+  { name = "Derek Thirstrup" },
+]
+keywords = ["napari", "microscopy", "ND2", "CZI", "S3", "fsspec", "Dask"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Framework :: napari",
+  "Intended Audience :: Science/Research",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Topic :: Scientific/Engineering :: Image Processing",
+]
+dependencies = [
+  "dask[array]>=2026.1,<2027",
+  "fsspec>=2026.1,<2027",
+  "lz4>=4.3,<5",
+  "magicgui>=0.10.1,<0.11",
+  "nd2>=0.11.3,<0.12",
+  "npe2>=0.8,<0.9",
+  "numpy>=2,<3",
+  "pylibczirw>=6.1,<7",
+  "requests>=2.32,<3",
+  "s3fs>=2026.1,<2027",
+]
+
+[project.optional-dependencies]
+napari = ["napari>=0.8,<0.9"]
+test = ["pytest>=9,<10"]
+docs = ["mkdocs-material>=9.6,<10"]
+
+[project.urls]
+Homepage = "https://derekthirstrup.github.io/napari-bfs-nd2/"
+Documentation = "https://derekthirstrup.github.io/napari-bfs-nd2/"
+"Source Code" = "https://github.com/derekthirstrup/napari-bfs-nd2"
+"Bug Tracker" = "https://github.com/derekthirstrup/napari-bfs-nd2/issues"
+Changelog = "https://github.com/derekthirstrup/napari-bfs-nd2/blob/main/CHANGELOG.md"
+
+[project.entry-points."napari.manifest"]
+napari-bfs-nd2 = "napari_bfs_nd2:napari.yaml"
+
+[tool.setuptools.package-data]
+napari_bfs_nd2 = ["napari.yaml"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"

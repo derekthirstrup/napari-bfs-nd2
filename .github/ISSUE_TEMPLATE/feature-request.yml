@@ -1,0 +1,28 @@
+name: Feature request
+description: Suggest a new reader, authentication, metadata, performance, or widget capability
+title: "[Feature]: "
+labels: [enhancement]
+body:
+  - type: textarea
+    id: use-case
+    attributes:
+      label: Scientific or operational use case
+      description: Describe the workflow that is currently blocked or inefficient.
+    validations:
+      required: true
+  - type: textarea
+    id: behavior
+    attributes:
+      label: Proposed behavior
+      description: Describe the desired napari or Python interface.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+  - type: textarea
+    id: data
+    attributes:
+      label: Relevant format or dataset characteristics
+      description: Include dimensions and storage type, but do not attach proprietary data or credentials.

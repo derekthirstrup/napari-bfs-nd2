@@ -1,0 +1,75 @@
+name: Bug report
+description: Report a reproducible installation, reader, widget, or metadata problem
+title: "[Bug]: "
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Do not include AWS credentials, presigned URL query strings, or proprietary microscopy files.
+  - type: dropdown
+    id: format
+    attributes:
+      label: Image format
+      options:
+        - ND2
+        - CZI
+        - Both
+        - Installation/plugin discovery
+    validations:
+      required: true
+  - type: dropdown
+    id: location
+    attributes:
+      label: Storage location
+      options:
+        - Local filesystem
+        - Amazon S3
+        - Public HTTP(S)
+        - Presigned HTTP(S)
+        - Not applicable
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Problem
+      description: What happened, and what did you expect?
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Reproduction steps
+      placeholder: |
+        1. Start napari...
+        2. Open the widget...
+        3. Paste a sanitized path...
+    validations:
+      required: true
+  - type: textarea
+    id: versions
+    attributes:
+      label: Environment
+      description: Include OS, Python, napari, and napari-bfs-nd2 versions.
+      render: text
+    validations:
+      required: true
+  - type: textarea
+    id: dimensions
+    attributes:
+      label: Dataset dimensions and acquisition details
+      description: Include scene/time/channel/Z/Y/X counts when known, without sensitive metadata.
+  - type: textarea
+    id: traceback
+    attributes:
+      label: Traceback or installer output
+      description: Remove credentials and URL query strings before pasting.
+      render: shell
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Sensitive information
+      options:
+        - label: I removed credentials, presigned URL query strings, and private data from this report.
+          required: true

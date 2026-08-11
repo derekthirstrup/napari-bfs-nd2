@@ -1,0 +1,11 @@
+include LICENSE
+include CHANGELOG.md
+include CITATION.cff
+include CONTRIBUTING.md
+include NOTICE
+include README.md
+include RELEASING.md
+include SECURITY.md
+include mkdocs.yml
+recursive-include .github *.md *.yml
+recursive-include docs *.md

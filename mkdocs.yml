@@ -1,0 +1,57 @@
+site_name: napari-bfs-nd2
+site_description: Plane-lazy napari reader for local, HTTP, and S3 ND2/CZI microscopy files
+site_url: https://derekthirstrup.github.io/napari-bfs-nd2/
+repo_url: https://github.com/derekthirstrup/napari-bfs-nd2
+repo_name: derekthirstrup/napari-bfs-nd2
+edit_uri: edit/main/docs/
+
+theme:
+  name: material
+  features:
+    - navigation.instant
+    - navigation.sections
+    - navigation.top
+    - content.code.copy
+    - search.suggest
+    - search.highlight
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: deep purple
+      accent: teal
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: deep purple
+      accent: teal
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
+nav:
+  - Home: index.md
+  - Installation: installation.md
+  - Using the plugin: usage.md
+  - S3 authentication: s3-authentication.md
+  - Data model and performance: data-model.md
+  - Troubleshooting: troubleshooting.md
+  - Development: development.md
+  - Publishing: publishing.md
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.superfences
+  - tables
+
+plugins:
+  - search
+
+copyright: Copyright &copy; 2026 Derek Thirstrup

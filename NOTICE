@@ -1,0 +1,9 @@
+napari-bfs-nd2 contains code selectively extracted and adapted from BFS2:
+https://github.com/derekthirstrup/BFS
+
+The adapted implementations are primarily in:
+src/napari_bfs_nd2/remote_nd2.py
+src/napari_bfs_nd2/remote_czi.py
+
+BFS2 is Copyright (c) 2025, BFS2 Development Team and is distributed under the
+BSD 3-Clause License reproduced in LICENSE.
