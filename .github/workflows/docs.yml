@@ -31,7 +31,7 @@ jobs:
       - name: Install documentation dependencies
         run: python -m pip install ".[docs]"
       - name: Configure GitHub Pages
-        uses: actions/configure-pages@v5
+        uses: actions/configure-pages@v6
       - name: Build documentation
         run: mkdocs build --strict
       - name: Upload GitHub Pages artifact
