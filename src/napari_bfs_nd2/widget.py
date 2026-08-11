@@ -1,11 +1,8 @@
 """napari dock widget for opening local and remote microscopy images."""
 
-from typing import TYPE_CHECKING, Any
+from typing import Any
 
 from .reader import _is_supported_path
-
-if TYPE_CHECKING:
-    import napari
 
 PLUGIN_NAME = "napari-bfs-nd2"
 
@@ -20,9 +17,14 @@ def open_image_path(viewer: Any, image_path: str) -> Any:
     return viewer.open(normalized_path, plugin=PLUGIN_NAME)
 
 
-def make_remote_image_widget(viewer: "napari.viewer.Viewer") -> Any:
+def make_remote_image_widget() -> Any:
     """Create a dock widget with a pasteable microscopy image path."""
+    import napari
     from magicgui.widgets import Container, Label, LineEdit, PushButton
+
+    viewer = napari.current_viewer()
+    if viewer is None:
+        raise RuntimeError("Open the widget from an active napari viewer.")
 
     path_entry = LineEdit(
         label="Image path or URI",

@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import inspect
 import sys
 from types import ModuleType
 
@@ -19,8 +20,8 @@ class FakeViewer:
         return ["layer"]
 
 
-def test_widget_requests_the_active_napari_viewer():
-    assert make_remote_image_widget.__annotations__["viewer"] == "napari.viewer.Viewer"
+def test_widget_factory_accepts_no_arguments_for_napari_08():
+    assert not inspect.signature(make_remote_image_widget).parameters
 
 
 @pytest.mark.parametrize(
@@ -84,11 +85,14 @@ def test_widget_button_opens_the_pasted_path(monkeypatch):
     fake_widgets.PushButton = PushButton
     fake_magicgui = ModuleType("magicgui")
     fake_magicgui.widgets = fake_widgets
+    viewer = FakeViewer()
+    fake_napari = ModuleType("napari")
+    fake_napari.current_viewer = lambda: viewer
+    monkeypatch.setitem(sys.modules, "napari", fake_napari)
     monkeypatch.setitem(sys.modules, "magicgui", fake_magicgui)
     monkeypatch.setitem(sys.modules, "magicgui.widgets", fake_widgets)
 
-    viewer = FakeViewer()
-    widget = make_remote_image_widget(viewer)
+    widget = make_remote_image_widget()
     path_entry, open_button, status = widget.widgets
     path_entry.value = "s3://bucket/image.czi"
 
@@ -96,3 +100,12 @@ def test_widget_button_opens_the_pasted_path(monkeypatch):
 
     assert viewer.calls == [("s3://bucket/image.czi", PLUGIN_NAME)]
     assert status.value == "Opened 1 layer."
+
+
+def test_widget_requires_an_active_viewer(monkeypatch):
+    fake_napari = ModuleType("napari")
+    fake_napari.current_viewer = lambda: None
+    monkeypatch.setitem(sys.modules, "napari", fake_napari)
+
+    with pytest.raises(RuntimeError, match="active napari viewer"):
+        make_remote_image_widget()
