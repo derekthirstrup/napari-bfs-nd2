@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the software release."
+title: "napari-bfs-nd2: plane-lazy remote ND2/CZI reader for napari"
+type: software
+authors:
+  - family-names: Thirstrup
+    given-names: Derek
+repository-code: "https://github.com/derekthirstrup/napari-bfs-nd2"
+url: "https://derekthirstrup.github.io/napari-bfs-nd2/"
+version: 0.3.0
+license: BSD-3-Clause

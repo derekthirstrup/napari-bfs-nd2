@@ -1,0 +1,23 @@
+name: napari-bfs-nd2
+display_name: BFS Remote ND2/CZI Reader
+contributions:
+  commands:
+    - id: napari-bfs-nd2.read_microscopy
+      title: Read ND2 or CZI from local storage or S3
+      python_name: napari_bfs_nd2.reader:napari_get_reader
+    - id: napari-bfs-nd2.open_remote_image
+      title: Open a local or remote ND2/CZI image
+      python_name: napari_bfs_nd2.widget:make_remote_image_widget
+  readers:
+    - command: napari-bfs-nd2.read_microscopy
+      filename_patterns:
+        - "*.nd2"
+        - "*.ND2"
+        - "*.nd2?*"
+        - "*.czi"
+        - "*.CZI"
+        - "*.czi?*"
+      accepts_directories: false
+  widgets:
+    - command: napari-bfs-nd2.open_remote_image
+      display_name: Open ND2/CZI path
