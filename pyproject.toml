@@ -40,7 +40,7 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-napari = ["napari>=0.8,<0.9"]
+napari = ["napari>=0.8,<0.10"]
 test = ["pytest>=9,<10", "ruff>=0.15.2,<0.16"]
 docs = ["mkdocs-material>=9.6,<10"]
 
